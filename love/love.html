@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+   
     <div class="wrapper">
         <!-- <img src="../thư love.png" alt=""> -->
         <div class="formInput">
@@ -41,6 +42,9 @@
                 <input type="text" id="inputField" placeholder="My Confession" readonly>
             </div>
             <div class="buttonLove">
+                <audio id="audioPlayer">
+        <source src="song.mp3">
+    </audio>
                 <div class="cricleBtn"></div>
                 <div class="button"></div>
             </div>
@@ -175,6 +179,7 @@
     const typingSpeed = 100; // milliseconds per character
 
     let charIndex = 0;
+
     function typeText() {
         if (charIndex < textToType.length) {
             inputField.value += textToType.charAt(charIndex);
@@ -206,6 +211,7 @@
             },4000)
         }
     }
+
 
     setTimeout(()=>{
         typeText();
@@ -239,6 +245,7 @@
                 textCharLetter();
             }, 200)
     }
+
 
     // chữ của thư bạn muốn gửi
     let indexTextContent = 0;
@@ -275,7 +282,13 @@
         document.querySelector(".listSlider").prepend(slider[slider.length -1])
     })
 
+
+
     document.querySelector(".buttonLove").addEventListener("click", function(){
+     var audio = document.getElementById("audioPlayer");
+    
+    // Play the music
+    audio.play(); 
         let timeout = setInterval(()=>{
             var letters = document.createElement("div");
             letters.className = "letters"
@@ -301,6 +314,8 @@
                 })
             })
         },500)
+
+
     })
 
     document.querySelector(".fa-xmark").addEventListener("click", function(){
@@ -309,5 +324,8 @@
         clearInterval(timoutTextLetterContent)
         $(".wrapperLetterForm").fadeOut()
     })
+
+ 
+
 </script>
 </html>
